@@ -1,23 +1,17 @@
 import 'package:flutter/material.dart';
-
-import 'constants.dart';
-import 'pages/home/home_page.dart';
-
-void main(){
+void main(List<String> args) {
   runApp(MyApp());
 }
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
 
-class MyApp extends StatelessWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: HomePage(),
-      theme: ThemeData(
-          brightness: Brightness.dark,
-          primaryColor: PrimaryColor,
-          scaffoldBackgroundColor: PrimaryColor
-      ),
-    );
+    return Container();
   }
 }
