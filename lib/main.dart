@@ -1,6 +1,7 @@
+import 'package:apisaissai/home/homePage.dart';
 import 'package:flutter/material.dart';
 void main(List<String> args) {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -12,6 +13,9 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: HomePage(),
+    );
   }
 }
