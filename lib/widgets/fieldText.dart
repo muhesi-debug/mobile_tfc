@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class CustomFieldeText {
   final String title;
   final String placeholder;
-  final String erros;
+  late String erros;
   final bool isPass;
   late String _value;
 
@@ -28,7 +28,7 @@ class CustomFieldeText {
         labelText: title,
         labelStyle: const TextStyle(color: redColorTextTitre),
         border: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(1))
+          borderRadius: BorderRadius.all(Radius.circular(2))
         )
       ),
     );

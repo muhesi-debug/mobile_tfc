@@ -32,8 +32,17 @@ class _RegisterState extends State<Register> {
     title: "Téléphone",
     placeholder: 'Entrez votre numéro de téléphone'
   );
+
+  // La clé du formulaire
+  final _key=GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
+
+    // Affichages des érreurs 
+    txtNom.erros="Entrez votre Nom svp";
+    txtPostnom.erros="Entrez votre Postnom svp";
+    txtAdresse.erros="Entrez votre Adresse svp";
+    txtPhone.erros="Entrez votre Numéro de télephone svp";
     return Scaffold(
       body: Center(
         child: SingleChildScrollView(
@@ -42,6 +51,7 @@ class _RegisterState extends State<Register> {
 
               // Le formulaire d'enregistrement
           child: Form(
+            key: _key,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -59,14 +69,12 @@ class _RegisterState extends State<Register> {
                 const SizedBox(height: 10,),
                 txtPhone.textFormField(),
                 const SizedBox(height: 10,),
-                txtPhone.textFormField(),
-                const SizedBox(height: 10,),
                 // Button 
                  ElevatedButton(
-                      child: const Text("Enregistrer"),
+                      child: const Text("Enregistrer",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: redColorTextTitre,
-                        minimumSize: const Size.fromHeight(40)
+                        minimumSize: const Size.fromHeight(45)
                         
                       ),
                        onPressed: (){
