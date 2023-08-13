@@ -78,13 +78,11 @@ class _RegisterState extends State<Register> {
                         
                       ),
                        onPressed: (){
-                        // if (_key.currentState!.validate()) {
-                        //   if (txtPass.value==txtPassConf.value) {
-                        //     register(txtNom.value, txtPostNom.value, txtEmail.value, txtAdresse.value, txtPhone.value, txtPass.value);
-                        //   }else{
-                        //     print("echouer");
-                        //   }
-                        // }
+                        if (_key.currentState!.validate()) {
+                          print("Phone: "+txtPhone.value);
+                          print("Adresse: "+txtAdresse.value);
+                          print("Nom: "+txtNom.value);
+                        }
                         
                        }, ),
               ],
