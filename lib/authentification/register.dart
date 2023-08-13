@@ -1,3 +1,4 @@
+import 'package:apisaissai/authentification/controls/controlRegister.dart';
 import 'package:apisaissai/colors/color.dart';
 import 'package:apisaissai/widgets/fieldText.dart';
 import 'package:flutter/material.dart';
@@ -79,9 +80,11 @@ class _RegisterState extends State<Register> {
                       ),
                        onPressed: (){
                         if (_key.currentState!.validate()) {
-                          print("Phone: "+txtPhone.value);
-                          print("Adresse: "+txtAdresse.value);
-                          print("Nom: "+txtNom.value);
+                          register(txtNom.value,
+                          txtPostnom.value, 
+                          txtEmail.value, 
+                          txtAdresse.value,
+                          txtPhone.value);
                         }
                         
                        }, ),
