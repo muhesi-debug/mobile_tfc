@@ -10,10 +10,10 @@ class YouTubeHome extends StatefulWidget {
 }
 
 class _YouTubeHomeState extends State<YouTubeHome> {
-  Channel? _channel;
+   Channel? _channel;
 
-  void getChannel() async{
-    Channel channel=await ApiService.instance.fetchChannel(channelId: "UCpxAN_MF3CwzuK5l44Wy-TQ");
+   getChannel() async{
+    Channel channel=await ApiService.instance.fetchChannel("UCpxAN_MF3CwzuK5l44Wy-TQ");
     setState(() {
       _channel=channel;
     });

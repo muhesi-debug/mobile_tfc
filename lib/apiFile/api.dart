@@ -11,7 +11,7 @@ class ApiService {
   static ApiService instance = ApiService.instanciate();
   final String _baseUrl="www.googleapis.com";
   String _nextPageToken="";
-  Future <Channel> fetchChannel({String channelId=''}) async{
+  Future <Channel> fetchChannel(String channelId) async{
     var parameters={
       "part":'snippet,contentDetails,statistics',
       "id":channelId,
@@ -51,11 +51,11 @@ class ApiService {
     var response= await http.get(uri,headers: headers);
     if (response.statusCode==200) {
       var data=jsonDecode(response.body);
-      _nextPageToken=data["nextPageToken"];
+      _nextPageToken=data["nextPageToken"]??"";
       List<dynamic>jsonVideo=data['items'];
       List<Video> videos=[];
       for (var video  in jsonVideo) {
-        videos.add(Video.fromJson(video));
+        videos.add(Video.fromJson(video['snippet']));
         
       }
       return videos;
