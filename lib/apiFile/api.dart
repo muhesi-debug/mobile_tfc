@@ -14,7 +14,7 @@ class ApiService {
   Future <Channel> fetchChannel({String? channelId}) async{
     var parameters={
       "part":'snippet, contentDetails, statistics',
-      "id":channelId! ,
+      "id":channelId!,
       'key':API_KEY
     };
     var headers={
@@ -29,7 +29,8 @@ class ApiService {
       Channel channel=Channel.fromJson(finalDate);
       channel.videos=await fetchVideo(playListId: channel.uploadPlayListId);
       return channel;
-    }else{
+    }
+    else{
       var error=json.decode(response.body);
       var errorMessage=error['error']['message'];
       throw errorMessage;
