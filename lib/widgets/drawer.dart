@@ -69,7 +69,7 @@ class Drawbles {
             InkWell(
               onTap: () {
                  var route=MaterialPageRoute(builder: ((context) => Register()));
-                  Navigator.push(context!, route);
+                  Navigator.push(context, route);
               },
               child: const ListTile(
                 title: Text("créer compte membre"),
