@@ -2,19 +2,20 @@ import 'package:apisaissai/models/video_model.dart';
 
 class Channel{
   final String id;
-  final String title;
-  final String profilPictureUrl;
-  final String souscriberCount;
+  final String? title;
+  final String? profilPictureUrl;
+  final String? souscriberCount;
   final String videoCount;
   final String uploadPlayListId;
-  late List<Video> videos;
+   List<Video>? videos;
   Channel({
     this.id="",
-    this.title="",
-    this.profilPictureUrl="",
-    this.souscriberCount="",
+    this.title,
+    this.profilPictureUrl,
+    this.souscriberCount,
     this.videoCount="",
-    this.uploadPlayListId=""
+    this.uploadPlayListId="",
+    this.videos
   });
 
   factory Channel.fromJson(Map<String, dynamic> map){
@@ -24,7 +25,7 @@ class Channel{
       profilPictureUrl: map['snippet']['thumbnails']['default']['url'],
       souscriberCount: map['statistics']['subscriberCount'],
       videoCount: map['statistics']['videoCount'],
-      uploadPlayListId:map['contentDetails']['relatedPlayLists']['uploads'] 
+      uploadPlayListId:map['contentDetails']['relatedPlaylists']['uploads'] 
     );
   }
 }

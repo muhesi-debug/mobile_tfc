@@ -10,17 +10,19 @@ class YouTubeHome extends StatefulWidget {
 }
 
 class _YouTubeHomeState extends State<YouTubeHome> {
-    late Channel _channel;
+     Channel? _channel;
 
    getChannel() async{
-    
+    Channel channel=await ApiService.instance.fetchChannel(channelId:"UCpxAN_MF3CwzuK5l44Wy-TQ");
+    setState(() {
+      _channel!=channel;
+    });
     
   }
   @override
-  void initState() async{
+  void initState(){
     super.initState();
-    _channel=await ApiService.instance.fetchChannel(channelId: "UCpxAN_MF3CwzuK5l44Wy-TQ");
-
+    getChannel();
   }
   @override
   Widget build(BuildContext context) {
@@ -39,7 +41,7 @@ class _YouTubeHomeState extends State<YouTubeHome> {
                 children: [
                   CircleAvatar(
                     backgroundColor: Colors.white,
-                     backgroundImage: NetworkImage(_channel.profilPictureUrl),
+                     backgroundImage: NetworkImage(_channel!.profilPictureUrl!),
                   ),
                   const SizedBox(
                     width: 12,
@@ -47,8 +49,8 @@ class _YouTubeHomeState extends State<YouTubeHome> {
                   Expanded(
                     child: Column(
                       children: [
-                        Text(_channel.title,style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: redColorTextTitre),),
-                        Text(_channel.souscriberCount,style: const TextStyle(fontSize: 19,fontWeight: FontWeight.bold,color: Colors.grey),),
+                        Text(_channel!.title!,style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: redColorTextTitre),),
+                        Text(_channel!.souscriberCount!,style: const TextStyle(fontSize: 19,fontWeight: FontWeight.bold,color: Colors.grey),),
                       ],
                     ),
                   ),

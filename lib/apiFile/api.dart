@@ -13,8 +13,8 @@ class ApiService {
   String _nextPageToken="";
   Future <Channel> fetchChannel({String? channelId}) async{
     var parameters={
-      "part":'snippet,contentDetails,statistics',
-      "id":channelId,
+      "part":'snippet, contentDetails, statistics',
+      "id":channelId! ,
       'key':API_KEY
     };
     var headers={
@@ -24,22 +24,22 @@ class ApiService {
 
     var response=await http.get(uri,headers: headers);
     if (response.statusCode==200) {
-      var data=jsonDecode(response.body);
+      var data=json.decode(response.body);
       var finalDate=data['items'][0];
       Channel channel=Channel.fromJson(finalDate);
       channel.videos=await fetchVideo(playListId: channel.uploadPlayListId);
       return channel;
     }else{
-      var error=jsonDecode(response.body);
+      var error=json.decode(response.body);
       var errorMessage=error['error']['message'];
       throw errorMessage;
     }
 
   }
-  Future<List<Video>>fetchVideo({String playListId=''}) async{
+  Future<List<Video>>fetchVideo({String? playListId}) async{
     var parameters={
-      "part":'snippet,contentDetails,statistics',
-      "playListId":playListId,
+      "part":'snippet',
+      "playListId":playListId!,
       "maxResults":'8',
       "pageToken":_nextPageToken,
       'key':API_KEY
@@ -47,10 +47,10 @@ class ApiService {
     var headers={
       HttpHeaders.contentTypeHeader:'application/json'
     };
-    Uri uri=Uri.https(_baseUrl,'/youtube/v3/playListItems',parameters);
+    Uri uri=Uri.https(_baseUrl,'/youtube/v3/playlistItems',parameters);
     var response= await http.get(uri,headers: headers);
     if (response.statusCode==200) {
-      var data=jsonDecode(response.body);
+      var data=json.decode(response.body);
       _nextPageToken=data["nextPageToken"]??'';
       List<dynamic>jsonVideo=data['items'];
       List<Video> videos=[];
@@ -61,7 +61,7 @@ class ApiService {
       return videos;
       
     }else{
-      var error=jsonDecode(response.body);
+      var error=json.decode(response.body);
       var errorMessage=error['error']['message'];
       throw errorMessage;
     }

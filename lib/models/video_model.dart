@@ -11,7 +11,7 @@ class Video{
   });
   factory Video.fromJson(Map<String, dynamic> map){
     return Video(
-      id: map['ressourceId']['videoId'],
+      id: map['resourceId']['videoId'],
       title: map['title'],
       thumbnailsUrl: map['thumbnails']['high']['url'],
       channelTitle: map['channelTitle']
