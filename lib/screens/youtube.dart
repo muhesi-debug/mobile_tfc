@@ -1,6 +1,7 @@
 import 'package:apisaissai/apiFile/api.dart';
 import 'package:apisaissai/colors/color.dart';
 import 'package:apisaissai/models/channel_model.dart';
+import 'package:apisaissai/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 class YouTubeHome extends StatefulWidget {
   const YouTubeHome({super.key});
@@ -10,6 +11,7 @@ class YouTubeHome extends StatefulWidget {
 }
 
 class _YouTubeHomeState extends State<YouTubeHome> {
+  Drawbles menu= Drawbles();
      Channel? _channel;
 
    getChannel() async{
@@ -32,7 +34,13 @@ class _YouTubeHomeState extends State<YouTubeHome> {
         title: const Text("En direct"),
         centerTitle: true,
       ),
-      body: Column(
+      body:_channel==null?Center(
+        child: CircularProgressIndicator(
+          valueColor: AlwaysStoppedAnimation<Color>(
+            Theme.of(context).primaryColor
+          ),
+        ),
+      ):Column(
         children: [
           Card(
             child: Container(
@@ -49,7 +57,7 @@ class _YouTubeHomeState extends State<YouTubeHome> {
                   Expanded(
                     child: Column(
                       children: [
-                        Text(_channel!.title!,style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: redColorTextTitre),),
+                         Text(_channel!.title!,style: const TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: redColorTextTitre),),
                         Text(_channel!.souscriberCount!,style: const TextStyle(fontSize: 19,fontWeight: FontWeight.bold,color: Colors.grey),),
                       ],
                     ),
@@ -64,7 +72,8 @@ class _YouTubeHomeState extends State<YouTubeHome> {
         //   return null;
         // }))
         ],
-      )
+      ),
+      drawer: menu.drawer(context),
     );
   }
 }
