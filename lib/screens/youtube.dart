@@ -77,3 +77,12 @@ class _YouTubeHomeState extends State<YouTubeHome> {
     );
   }
 }
+
+class LancerMultimedia extends StatelessWidget {
+  const LancerMultimedia({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return YouTubeHome();
+  }
+}

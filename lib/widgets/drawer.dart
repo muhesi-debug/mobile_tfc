@@ -1,5 +1,8 @@
+import 'package:apisaissai/authentification/don.dart';
 import 'package:apisaissai/authentification/register.dart';
 import 'package:apisaissai/colors/color.dart';
+import 'package:apisaissai/home/homePage.dart';
+import 'package:apisaissai/screens/youtube.dart';
 import 'package:flutter/material.dart';
 
 
@@ -25,7 +28,10 @@ class Drawbles {
 
             // Body
             InkWell(
-              onTap: () {},
+              onTap: () {
+                var route=MaterialPageRoute(builder: ((context) => HomePage()));
+                  Navigator.push(context, route);
+              },
               child: const ListTile(
                 title: Text("Accueil"),
                 leading: Icon(
@@ -35,7 +41,10 @@ class Drawbles {
               ),
             ),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                var route=MaterialPageRoute(builder: ((context) => LancerMultimedia()));
+                  Navigator.push(context, route);
+              },
               child: const ListTile(
                 title: Text("News"),
                 leading: Icon(
@@ -55,7 +64,10 @@ class Drawbles {
               ),
             ),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                var route=MaterialPageRoute(builder: ((context) => OffreDon()));
+                  Navigator.push(context, route);
+              },
               child: const ListTile(
                 title: Text("Souscription"),
                 leading: Icon(

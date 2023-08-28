@@ -9,7 +9,7 @@ import 'package:http/http.dart'as http;
 class ApiService {
   ApiService.instanciate();
   static ApiService instance = ApiService.instanciate();
-  final String _baseUrl="www.googleapis.com";
+  final String _baseUrl='www.googleapis.com';
   String _nextPageToken="";
   Future <Channel> fetchChannel({String? channelId}) async{
     var parameters={

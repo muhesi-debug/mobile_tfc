@@ -15,6 +15,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.red,
       appBar: AppBar(
         backgroundColor: redColorTextTitre,
         title: const Text("Moto TV"),
@@ -23,6 +24,17 @@ class _HomePageState extends State<HomePage> {
 
       // Drawble
       drawer: dra.drawer(context),
-    );
+      body: Center(
+        child: Container(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("bienvenue Chez nous",style: TextStyle(color: Colors.white,fontSize: 30,fontWeight: FontWeight.bold),)
+
+            ],
+          ),
+        ),
+      ),
+      );
   }
 }
