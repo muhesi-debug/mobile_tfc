@@ -22,12 +22,12 @@ class ApiService {
     };
     Uri uri=Uri.https(_baseUrl,'/youtube/v3/channels',parameters);
 
-    var response=await http.get(uri,headers: headers);
+    var response= await http.get(uri,headers: headers);
     if (response.statusCode==200) {
       var data=json.decode(response.body);
       var finalDate=data['items'][0];
       Channel channel=Channel.fromJson(finalDate);
-      channel.videos=await fetchVideo(playListId: channel.uploadPlayListId);
+      channel.videos= await fetchVideo(playListId: channel.uploadPlayListId);
       return channel;
     }
     else{
@@ -40,7 +40,7 @@ class ApiService {
   Future<List<Video>>fetchVideo({String? playListId}) async{
     var parameters={
       "part":'snippet',
-      "playListId":playListId!,
+      "playlistId":playListId,
       "maxResults":'8',
       "pageToken":_nextPageToken,
       'key':API_KEY

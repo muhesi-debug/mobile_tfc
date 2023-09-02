@@ -1,20 +1,20 @@
 import 'package:apisaissai/models/video_model.dart';
 
 class Channel{
-  final String id;
+  final String? id;
   final String? title;
   final String? profilPictureUrl;
   final String? souscriberCount;
-  final String videoCount;
-  final String uploadPlayListId;
+  final String? videoCount;
+  final String? uploadPlayListId;
    List<Video>? videos;
   Channel({
-    this.id="",
+    this.id,
     this.title,
     this.profilPictureUrl,
     this.souscriberCount,
-    this.videoCount="",
-    this.uploadPlayListId="",
+    this.videoCount,
+    this.uploadPlayListId,
     this.videos
   });
 

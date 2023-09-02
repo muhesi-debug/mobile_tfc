@@ -1,3 +1,6 @@
+import 'package:apisaissai/apiFile/apiSouscription.dart';
+import 'package:apisaissai/authentification/models/membreModels.dart';
+import 'package:apisaissai/authentification/models/souscriptionModel.dart';
 import 'package:apisaissai/colors/color.dart';
 import 'package:apisaissai/widgets/fieldText.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +13,12 @@ class OffreDon extends StatefulWidget {
 }
 
 class _OffreDonState extends State<OffreDon> {
+
+
+  // L'instance de la classe postModel
+
+   SouscriptionModel monDons=SouscriptionModel();
+    bool dons=false;
   // Les instance de la classe Custom
   CustomFieldeText txtDesignation = CustomFieldeText(
     title: "Designation",
@@ -61,10 +70,31 @@ class _OffreDonState extends State<OffreDon> {
                     style: ElevatedButton.styleFrom(
                         backgroundColor: redColorTextTitre,
                         minimumSize: const Size.fromHeight(45)),
-                    onPressed: () {
+                    onPressed: () async {
+                      setState(() {
+                        dons=true;
+                      });
                       if (_key.currentState!.validate()) {
-                        print(txtDesignation.value);
-                      }
+                          // Add dans la bases de données 
+                          monDons.designation=txtDesignation.value;
+                          monDons.valeur=txtValeur.value;
+                          monDons.membre=MembreModels.sessionUser!.idMembre;
+                            var resultat=await Api.addSouscription(monDons.toMap());
+                            if (resultat!=null && resultat[0]==true) {
+                              setState(() {
+                                dons=false;
+                              });
+                              Navigator.of(context).pop();
+                            }else if(resultat!=null && resultat[0]==false){
+                              setState(() {
+                                dons=false;
+                              });
+                            }else{
+                              setState(() {
+                                dons=false;
+                              });
+                            }
+                          }
                     },
                   ),
                 ],

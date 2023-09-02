@@ -1,6 +1,14 @@
+import 'dart:convert';
+
+import 'package:apisaissai/authentification/controls/loading.dart';
+import 'package:apisaissai/authentification/don.dart';
+import 'package:apisaissai/authentification/models/membreModels.dart';
 import 'package:apisaissai/colors/color.dart';
 import 'package:apisaissai/widgets/fieldText.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart'as http;
+
+import 'controls/encrypt.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -10,6 +18,10 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+
+ // Les variables 
+  String erreurs="";
+  bool _loading=false;
 
   // Les instance de la classe Custom
   CustomFieldeText txtEmail = CustomFieldeText(
@@ -24,9 +36,50 @@ class _LoginState extends State<Login> {
 
   // La clé du formulaire 
   final _key=GlobalKey<FormState>();
+
+
+    // La connexion 
+  void login(String email,String password) async{
+    // Initialisation de la variable 
+    setState(() {
+          erreurs="";
+          _loading=true;
+        });
+    final Uri url=Uri.parse("http://g3ig-kmuhesi.uaclab.net/php/connexion.php");
+    final response=await http.post(url,body: {
+      "email":encrypt(email),
+      "pass":encrypt(password)
+    });
+    if (response.statusCode==200) {
+      var data=jsonDecode(decrypt(response.body));
+      // print(data);
+      var result=data['resultat'];
+      int success=result[1];
+      if (success==1) {
+        //print(result[3]);
+        // On passe à la partie concernée 
+        setState(() {
+          erreurs=result[0];
+          MembreModels.savedUser(MembreModels.fromJson(result[2]));
+          _loading=false;
+          //Récupération des éléménts 
+          //UserModels.savedUser(UserModels.fromJson(result[2]));
+          //widget.login.call();
+          var route=MaterialPageRoute(builder: ((context) => OffreDon()));
+                  Navigator.push(context, route);
+          print(result[2]);
+        });
+      }else{
+        setState(() {
+          erreurs=result[0];
+          _loading=false;
+        });
+      }
+    }
+  }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return _loading?Loading():Scaffold(
       body: Center(
         child: SingleChildScrollView(
           child: Container(
@@ -55,15 +108,13 @@ class _LoginState extends State<Login> {
                           
                         ),
                          onPressed: (){
-                          // if (_key.currentState!.validate()) {
-                          //   register(txtNom.value,
-                          //   txtPostnom.value, 
-                          //   txtEmail.value, 
-                          //   txtAdresse.value,
-                          //   txtPhone.value);
-                          // }
+                         
+                         if (_key.currentState!.validate()) {
+                          login(txtEmail.value, txtPass.value);
+                        }
                           
                          }, ),
+                         Text(erreurs,textAlign: TextAlign.center,style: const TextStyle(color: redColorTextTitre,fontSize: 15,fontWeight: FontWeight.bold),)
             
                 ],
               ),

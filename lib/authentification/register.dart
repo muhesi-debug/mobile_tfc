@@ -1,7 +1,12 @@
-import 'package:apisaissai/authentification/controls/controlRegister.dart';
+import 'dart:convert';
+
+import 'package:apisaissai/authentification/login.dart';
 import 'package:apisaissai/colors/color.dart';
 import 'package:apisaissai/widgets/fieldText.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart'as http;
+
+import 'controls/encrypt.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -33,9 +38,60 @@ class _RegisterState extends State<Register> {
     title: "Téléphone",
     placeholder: 'Entrez votre numéro de téléphone'
   );
+   CustomFieldeText txtpass = CustomFieldeText(
+    title: "Mot de passe",
+    placeholder: 'Entrez votre mot de passe'
+  );
+
+  // Variables 
+
+  String erreurs="";
+  bool _loading=false;
+  bool visible=false;
 
   // La clé du formulaire
   final _key=GlobalKey<FormState>();
+
+
+   // Enregistrement de l'utilisateur dans la base de données mysql
+  void register(String nom,String postnom,String email,String adresse,String telephon,String pass)async{
+
+    // Initialisation de variable
+    setState(() {
+      erreurs="";
+      _loading=true;
+    });
+    final Uri uri = Uri.parse("http://g3ig-kmuhesi.uaclab.net/php/addMembre.php");
+    final response= await http.post(uri,body:{
+      "nom":encrypt(nom),
+      "postnom":encrypt(postnom),
+      "email":encrypt(email),
+      "adresse":encrypt(adresse),
+      "telephone":encrypt(telephon),
+      "pass":encrypt(pass)
+    });
+    var data =jsonDecode(decrypt(response.body));
+    // print(data);
+    var result=data['data'];
+      int success=result[1];
+      if (success==1) {
+        // On passe à la partie concernée 
+        setState(() {
+          erreurs="";
+          _loading=false;
+          var route=MaterialPageRoute(builder: ((context) => Login()));
+          Navigator.push(context, route);
+
+        });
+        // var route=MaterialPageRoute(builder: ((context) => Login()));
+        //   Navigator.push(context, route);
+      }else{
+        setState(() {
+          erreurs=result[0];
+          _loading=false;
+        });
+      }
+  }
   @override
   Widget build(BuildContext context) {
 
@@ -68,7 +124,11 @@ class _RegisterState extends State<Register> {
                 const SizedBox(height: 10,),
                 txtAdresse.textFormField(),
                 const SizedBox(height: 10,),
+                txtEmail.textFormField(),
+                const SizedBox(height: 10,),
                 txtPhone.textFormField(),
+                const SizedBox(height: 10,),
+                txtpass.textFormField(),
                 const SizedBox(height: 10,),
                 // Button 
                  ElevatedButton(
@@ -84,10 +144,12 @@ class _RegisterState extends State<Register> {
                           txtPostnom.value, 
                           txtEmail.value, 
                           txtAdresse.value,
-                          txtPhone.value);
+                          txtPhone.value,txtpass.value);
                         }
                         
                        }, ),
+                       const SizedBox(height: 10,),
+                       Text(erreurs,textAlign: TextAlign.center,style: const TextStyle(color: Colors.red,fontWeight: FontWeight.bold,fontSize: 15),)
               ],
             ),
           ),

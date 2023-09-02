@@ -13,9 +13,11 @@ class YouTubeHome extends StatefulWidget {
 class _YouTubeHomeState extends State<YouTubeHome> {
   Drawbles menu= Drawbles();
      Channel? _channel;
+     //MotoTv:  UCZSpiym20H7UtybU6GUVIA
+     //%a chaine: UCpxAN_MF3CwzuK5l44Wy-TQ
 
    getChannel() async{
-    Channel channel=await ApiService.instance.fetchChannel(channelId:"UCpxAN_MF3CwzuK5l44Wy-TQ");
+    Channel channel= await ApiService.instance.fetchChannel(channelId: 'UCZSpiym20H7UtybU6GUVIA');
     setState(() {
       _channel!=channel;
     });

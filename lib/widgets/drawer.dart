@@ -1,9 +1,31 @@
 import 'package:apisaissai/authentification/don.dart';
+import 'package:apisaissai/authentification/login.dart';
 import 'package:apisaissai/authentification/register.dart';
 import 'package:apisaissai/colors/color.dart';
 import 'package:apisaissai/home/homePage.dart';
 import 'package:apisaissai/screens/youtube.dart';
 import 'package:flutter/material.dart';
+
+import '../authentification/models/membreModels.dart';
+
+
+
+
+
+    // Vérification de la session de l'utilisateur 
+  // isconnected()async{
+  //    UserModels.getUser();
+  //   if (UserModels.sessionUser==null) {
+  //     setState(() {
+  //       login=false;
+  //     });
+  //   }else{
+  //     setState(() {
+  //       login=true;
+  //     });
+  //   }
+  // }
+
 
 
 class Drawbles {
@@ -85,6 +107,19 @@ class Drawbles {
               },
               child: const ListTile(
                 title: Text("créer compte membre"),
+                leading: Icon(
+                  Icons.create,
+                  color: Colors.black,
+                ),
+              ),
+            ),
+            InkWell(
+              onTap: () {
+                 var route=MaterialPageRoute(builder: ((context) => Login()));
+                  Navigator.push(context, route);
+              },
+              child: const ListTile(
+                title: Text("Se connecter"),
                 leading: Icon(
                   Icons.create,
                   color: Colors.black,
