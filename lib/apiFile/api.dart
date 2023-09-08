@@ -24,7 +24,7 @@ class ApiService {
 
     var response= await http.get(uri,headers: headers);
     if (response.statusCode==200) {
-      Map<String, dynamic> data=json.decode(response.body)['items'][0];
+      Map<String, dynamic> data=json.decode(response.body)['snippet']['items'][0]??'';
       Channel channel=Channel.fromJson(data);
       channel.videos= await fetchVideo(playListId: channel.uploadPlayListId);
       return channel;

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:apisaissai/home/homePage.dart';
+import 'package:apisaissai/message_push/view/generateNot.dart';
 import 'package:flutter/material.dart';
 
 
@@ -29,7 +30,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: PushNot(),
+      title: "Moto Tv",
     );
   }
 }

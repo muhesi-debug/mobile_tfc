@@ -10,10 +10,11 @@ class MembreModels {
   String email;
   String adresse;
   String telephone;
+  
 
   // le constructeur
   MembreModels({this.idMembre="",this.nom="",this.postnom="",this.email="",this.adresse="",this.telephone=""});
-  static   MembreModels? sessionUser;
+  static   MembreModels? sessionUser=null;
   // Le constructeur qui retourne l'objet de la classe
   factory MembreModels.fromJson(Map<String,dynamic>i)=>MembreModels(
     idMembre: i['idMembre'],
@@ -26,7 +27,7 @@ class MembreModels {
 
   // La fonction toMap qui va nous retourner les valeurs 
   Map<String,dynamic>toMap()=>{
-    "id":idMembre,
+    "idMembre":idMembre,
     "nom":nom,
     "postnom":postnom,
     "email":email,
@@ -35,14 +36,14 @@ class MembreModels {
   };
 
   // l
-  static void savedUser(MembreModels user) async{
+  static Future savedUser(MembreModels user) async{
     SharedPreferences pref = await SharedPreferences.getInstance();
     var data=json.encode(user.toMap());
     pref.setString("user", data);
     pref.commit();
   }
 
-  static void getUser()async{
+  static Future getUser()async{
     SharedPreferences pref=await SharedPreferences.getInstance();
     try {
       var data=pref.getString("user");
@@ -68,7 +69,7 @@ class MembreModels {
   }
 
   // Deconnxion
-  static void isDeconnected()async{
+  static Future isDeconnected()async{
     String nulls="";
     SharedPreferences p = await SharedPreferences.getInstance();
     p.setString("user", nulls);

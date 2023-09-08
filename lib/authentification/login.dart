@@ -1,9 +1,10 @@
 import 'dart:convert';
 
+import 'package:apisaissai/admin/actions/adminHome.dart';
 import 'package:apisaissai/authentification/controls/loading.dart';
-import 'package:apisaissai/authentification/don.dart';
 import 'package:apisaissai/authentification/models/membreModels.dart';
 import 'package:apisaissai/colors/color.dart';
+import 'package:apisaissai/home/homePage.dart';
 import 'package:apisaissai/widgets/fieldText.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart'as http;
@@ -65,7 +66,7 @@ class _LoginState extends State<Login> {
           //Récupération des éléménts 
           //UserModels.savedUser(UserModels.fromJson(result[2]));
           //widget.login.call();
-          var route=MaterialPageRoute(builder: ((context) => OffreDon()));
+          var route=MaterialPageRoute(builder: ((context) => HomePage()));
                   Navigator.push(context, route);
           print(result[2]);
         });
@@ -110,7 +111,14 @@ class _LoginState extends State<Login> {
                          onPressed: (){
                          
                          if (_key.currentState!.validate()) {
-                          login(txtEmail.value, txtPass.value);
+                          if (txtEmail.value=="admin@gmail.com" && txtPass.value=="admin") {
+                            // Appel de la partie de l'admin de l'apk
+                            var route=MaterialPageRoute(builder: ((context) => HomeAdminPage()));
+                              Navigator.push(context, route);
+                            
+                          }else{
+                            login(txtEmail.value, txtPass.value);
+                          }
                         }
                           
                          }, ),

@@ -1,7 +1,9 @@
 import 'package:apisaissai/apiFile/apiSouscription.dart';
+import 'package:apisaissai/authentification/controls/loading.dart';
 import 'package:apisaissai/authentification/models/membreModels.dart';
 import 'package:apisaissai/authentification/models/souscriptionModel.dart';
 import 'package:apisaissai/colors/color.dart';
+import 'package:apisaissai/home/homePage.dart';
 import 'package:apisaissai/widgets/fieldText.dart';
 import 'package:flutter/material.dart';
 
@@ -29,13 +31,37 @@ class _OffreDonState extends State<OffreDon> {
 
   // La clé du formulaire
   final _key = GlobalKey<FormState>();
+  bool connect=false;
+
+
+   verificc() async{
+     await MembreModels.getUser();
+
+    if (MembreModels.sessionUser?.idMembre!=null) {
+      setState(() {
+        connect=true;
+      });
+    }
+    else{
+      setState(() {
+        connect=false;
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    verificc();
+  }
   @override
   Widget build(BuildContext context) {
     // Les messages d'erreurs
     txtDesignation.erros = "Completer la designation";
     txtValeur.erros = "compléter la valeur";
     return Scaffold(
-      body: Center(
+      body: dons?Loading():Center(
         child: SingleChildScrollView(
           child: Container(
             padding: const EdgeInsets.all(20),
@@ -80,19 +106,23 @@ class _OffreDonState extends State<OffreDon> {
                           monDons.valeur=txtValeur.value;
                           monDons.membre=MembreModels.sessionUser!.idMembre;
                             var resultat=await Api.addSouscription(monDons.toMap());
-                            if (resultat!=null && resultat[0]==true) {
+                            if (resultat?[0]==true) {
                               setState(() {
                                 dons=false;
                               });
-                              Navigator.of(context).pop();
+                              
                             }else if(resultat!=null && resultat[0]==false){
                               setState(() {
                                 dons=false;
+                                print(MembreModels.sessionUser!.idMembre);
                               });
                             }else{
                               setState(() {
                                 dons=false;
                               });
+                              //print(MembreModels.sessionUser!.idMembre);
+                              var route=MaterialPageRoute(builder: ((context) => HomePage()));
+                              Navigator.push(context, route);
                             }
                           }
                     },
@@ -106,3 +136,36 @@ class _OffreDonState extends State<OffreDon> {
     );
   }
 }
+
+
+
+// Avec notification 
+class DialogAlert extends StatefulWidget {
+  const DialogAlert({super.key});
+
+  @override
+  State<DialogAlert> createState() => _DialogAlertState();
+}
+
+// Reponse 
+enum reposne{OUI,NON}
+
+class _DialogAlertState extends State<DialogAlert> {
+
+  
+
+  @override
+
+    @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: InkWell(
+          child: Text("Souscrre"),
+          onTap: (){},
+        ),
+      ),
+    );
+  }
+}
+
