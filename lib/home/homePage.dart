@@ -1,5 +1,6 @@
 import 'package:apisaissai/authentification/register.dart';
 import 'package:apisaissai/colors/color.dart';
+import 'package:apisaissai/message_push/view/generateNot.dart';
 import 'package:apisaissai/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 
@@ -42,31 +43,19 @@ class _HomePageState extends State<HomePage> {
   }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      
-      appBar: AppBar(
-        backgroundColor: redColorTextTitre,
-        title: const Text("Moto TV"),
-        centerTitle: true,
-      ),
-
-      // Drawble
-      drawer: connect?dra.connexion(context, MembreModels.sessionUser!.nom, MembreModels.sessionUser!.postnom, MembreModels.sessionUser!.email):dra.drawer(context),
-      body: Center(
-        child: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(image: AssetImage('images/logo.jpg'),fit: BoxFit.contain)
-            
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              //Text("bienvenue Chez nous",style: TextStyle(color: Colors.white,fontSize: 30,fontWeight: FontWeight.bold),)
-
-            ],
-          ),
+    return MaterialApp(
+      home: Scaffold(
+        
+        appBar: AppBar(
+          backgroundColor: kBackgroundColor,
+          title: const Text("Moto TV"),
+          centerTitle: true,
         ),
-      ),
-      );
+    
+        // Drawble
+        drawer: connect?dra.connexion(context, MembreModels.sessionUser!.nom, MembreModels.sessionUser!.postnom, MembreModels.sessionUser!.email):dra.drawer(context),
+        body: PushNot(),
+        ),
+    );
   }
 }

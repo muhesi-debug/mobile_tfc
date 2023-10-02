@@ -1,6 +1,7 @@
 import 'package:apisaissai/admin/actions/gestionDon.dart';
 import 'package:apisaissai/admin/actions/gestionMembre.dart';
 import 'package:apisaissai/admin/addProgramme.dart';
+import 'package:apisaissai/colors/color.dart';
 import 'package:flutter/material.dart';
 class HomeAdminPage extends StatefulWidget {
   const HomeAdminPage({super.key});
@@ -28,6 +29,7 @@ class _HomeAdminPageState extends State<HomeAdminPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: kBackgroundColor,
 
       ),
       body: Center(
@@ -35,7 +37,7 @@ class _HomeAdminPageState extends State<HomeAdminPage> {
         ),
         bottomNavigationBar: BottomNavigationBar(
           items: _item,
-          backgroundColor: Colors.red,
+          backgroundColor: kBackgroundColor,
           fixedColor: Colors.red,
           currentIndex: _id,
           onTap: (int item){

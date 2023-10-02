@@ -13,7 +13,7 @@ class MyHttpOverrides extends HttpOverrides{
   }
 }
 void main(List<String> args) {
-  HttpOverrides.global = new MyHttpOverrides();
+  HttpOverrides.global =  MyHttpOverrides();
   runApp(const MyApp());
 }
 class MyApp extends StatefulWidget {

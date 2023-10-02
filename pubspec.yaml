@@ -49,6 +49,8 @@ dependencies:
   file_picker: ^5.3.1
   firebase_core: ^2.15.1
   advance_pdf_viewer2: ^2.0.4
+  google_maps_flutter: ^2.3.0
+  webview_flutter: ^4.2.2
   
 
 dev_dependencies:

@@ -17,12 +17,14 @@ class PushNot extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const OverlaySupport(
-        child: MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "Not",
-      home: GenerateNot(),
-    ));
+    return Scaffold(
+      body: const OverlaySupport(
+          child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: "Not",
+        home: GenerateNot(),
+      )),
+    );
   }
 }
 
@@ -214,63 +216,64 @@ class _GenerateNotState extends State<GenerateNot> {
                 //top container
                 Padding(
                     padding: EdgeInsets.symmetric(vertical: 10, horizontal: 30),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Hi, Muhesi!",
-                          style: TextStyle(color: Colors.white, fontSize: 30),
-                        ),
-                        Stack(
-                          children: [
-                            Container(
-                              height: 50,
-                              width: 50,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(50),
-                                  image: DecorationImage(
-                                      image: AssetImage("images/1.jpg"),
-                                      fit: BoxFit.cover)),
-                            ),
-                            Positioned(
-                                right: 2,
-                                top: 2,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: kButtonColor,
-                                  ),
-                                  height: 10,
-                                  width: 10,
-                                )),
-                          ],
-                        )
-                      ],
-                    )),
-                const SizedBox(
-                  height: 20,
-                ),
-                // search Bar
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30),
-                  child: Container(
-                      padding: const EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                          color: kSearchbarColor,
-                          borderRadius: BorderRadius.circular(20)),
-                      child: Row(
-                        children: const [
-                          Icon(Icons.search),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          Text(
-                            "Recherche ...",
-                            style: TextStyle(fontSize: 18, color: Colors.white),
-                          )
-                        ],
-                      )),
-                ),
+                    // child: Row(
+                    //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //   children: [
+                    //     Text(
+                    //       "Bienvenu, Muhesi!",
+                    //       style: TextStyle(color: Colors.white, fontSize: 30),
+                    //     ),
+                    //     Stack(
+                    //       children: [
+                    //         Container(
+                    //           height: 50,
+                    //           width: 50,
+                    //           decoration: BoxDecoration(
+                    //               borderRadius: BorderRadius.circular(50),
+                    //               image: DecorationImage(
+                    //                   image: AssetImage("images/1.jpg"),
+                    //                   fit: BoxFit.cover)),
+                    //         ),
+                    //         Positioned(
+                    //             right: 2,
+                    //             top: 2,
+                    //             child: Container(
+                    //               decoration: BoxDecoration(
+                    //                 shape: BoxShape.circle,
+                    //                 color: kButtonColor,
+                    //               ),
+                    //               height: 10,
+                    //               width: 10,
+                    //             )),
+                    //       ],
+                    //     )
+                    //   ],
+                    // )
+                    ),
+                // const SizedBox(
+                //   height: 20,
+                // ),
+                // // search Bar
+                // Padding(
+                //   padding: const EdgeInsets.symmetric(horizontal: 30),
+                //   child: Container(
+                //       padding: const EdgeInsets.all(20),
+                //       decoration: BoxDecoration(
+                //           color: kSearchbarColor,
+                //           borderRadius: BorderRadius.circular(20)),
+                //       child: Row(
+                //         children: const [
+                //           Icon(Icons.search),
+                //           SizedBox(
+                //             width: 20,
+                //           ),
+                //           Text(
+                //             "Recherche ...",
+                //             style: TextStyle(fontSize: 18, color: Colors.white),
+                //           )
+                //         ],
+                //       )),
+                // ),
                 const SizedBox(
                   height: 20,
                 ),
@@ -303,13 +306,13 @@ class _GenerateNotState extends State<GenerateNot> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Populaire",
+                          "Les informations",
                           style: TextStyle(
                             color: Colors.white,
                           ),
                         ),
                         Text(
-                          "Populaire",
+                          "Actualisez - vous",
                           style: TextStyle(
                             color: Colors.white70,
                           ),
@@ -376,17 +379,17 @@ class _GenerateNotState extends State<GenerateNot> {
   }
 
   Widget movieListBuilder(List<MovieModel> movieList) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-      height: MediaQuery.of(context).size.height * 0.27,
-      child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: movieList.length,
-          itemBuilder: ((context, index) {
-            return CustomCard(
-              movieModel: movieList[index],
-            );
-          })),
+    return  Container(
+        margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+        height: MediaQuery.of(context).size.height * 0.27,
+        child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: movieList.length,
+            itemBuilder: ((context, index) {
+              return CustomCard(
+                movieModel: movieList[index],
+              );
+            })),
     );
   }
 

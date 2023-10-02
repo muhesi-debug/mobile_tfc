@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:apisaissai/admin/addProgramme.dart';
 import 'package:apisaissai/authentification/controls/loading.dart';
+import 'package:apisaissai/colors/color.dart';
 import 'package:apisaissai/home/homePage.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart'as http;
@@ -70,7 +71,7 @@ class _GestionSouscriptionState extends State<GestionSouscription> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.red,
+        backgroundColor: kBackgroundColor,
         title: const Text('Gestion des Souscriptions'),
         actions: [
           IconButton(
@@ -84,7 +85,7 @@ class _GestionSouscriptionState extends State<GestionSouscription> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: _item,
-        backgroundColor: Colors.red,
+        backgroundColor: kBackgroundColor,
         fixedColor: Colors.red,
         currentIndex: _id,
         onTap: (int item) {

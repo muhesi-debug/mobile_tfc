@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:apisaissai/admin/actions/gestionDon.dart';
 import 'package:apisaissai/admin/addProgramme.dart';
 import 'package:apisaissai/authentification/controls/loading.dart';
+import 'package:apisaissai/colors/color.dart';
 import 'package:apisaissai/home/homePage.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart'as http;
@@ -71,7 +72,7 @@ class _GestionMembreState extends State<GestionMembre> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.red,
+        backgroundColor: kBackgroundColor,
         title: const Text('Gestion des Membres'),
         actions: [
           IconButton(
@@ -85,7 +86,7 @@ class _GestionMembreState extends State<GestionMembre> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: _item,
-        backgroundColor: Colors.red,
+        backgroundColor: kBackgroundColor,
         fixedColor: Colors.red,
         currentIndex: _id,
         onTap: (int item) {
@@ -142,20 +143,34 @@ class _GestionMembreState extends State<GestionMembre> {
               'Phone',
               style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
             )),
-
-            DataColumn(
-                label: const Text(
-              'Adresse',
-              style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
-            )),
           ], rows: [
+            // DataRow(cells: [
+            //   DataCell(Text(index.toString())),
+            //   DataCell(Text(Showmembre[index]['nom'])),
+            //   DataCell(Text(Showmembre[index]['postnom'])),
+            //   DataCell(Text(Showmembre[index]['email'])),
+            //   DataCell(Text(Showmembre[index]['telephone'])),
+            // ]),
             DataRow(cells: [
-              DataCell(Text(index.toString())),
-              DataCell(Text(Showmembre[index]['nom'])),
-              DataCell(Text(Showmembre[index]['postnom'])),
-              DataCell(Text(Showmembre[index]['email'])),
-              DataCell(Text(Showmembre[index]['telephone'])),
-              DataCell(Text(Showmembre[index]['pass']))
+              DataCell(Text("1")),
+              DataCell(Text("Kambale")),
+              DataCell(Text("Muhesi")),
+              DataCell(Text("muhesimuyisa@gmail.com")),
+              DataCell(Text("0995612077")),
+            ]),
+             DataRow(cells: [
+              DataCell(Text("2")),
+              DataCell(Text("Kambale")),
+              DataCell(Text("Musubaho")),
+              DataCell(Text("vicmus@gmail.com")),
+              DataCell(Text("0976548937")),
+            ]),
+             DataRow(cells: [
+              DataCell(Text("3")),
+              DataCell(Text("Mumbere")),
+              DataCell(Text("Mulinda")),
+              DataCell(Text("mulindaserge@gmail.com")),
+              DataCell(Text("0987635375")),
             ]),
 
             

@@ -3,7 +3,9 @@ import 'package:apisaissai/authentification/don.dart';
 import 'package:apisaissai/authentification/login.dart';
 import 'package:apisaissai/authentification/register.dart';
 import 'package:apisaissai/colors/color.dart';
+import 'package:apisaissai/googleMaps/maps.dart';
 import 'package:apisaissai/home/homePage.dart';
+import 'package:apisaissai/message_push/view/generateNot.dart';
 import 'package:apisaissai/screens/youtube.dart';
 import 'package:flutter/material.dart';
 
@@ -164,7 +166,10 @@ class Drawbles {
               ),
             ),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                var route=MaterialPageRoute(builder: ((context) => MapSample()));
+                  Navigator.push(context, route);
+              },
               child: const ListTile(
                 title: Text("localisation"),
                 leading: Icon(
@@ -288,7 +293,10 @@ class Drawbles {
             // ),
 
             InkWell(
-              onTap: () {},
+              onTap: () {
+                var route=MaterialPageRoute(builder: ((context) => MapSample()));
+                  Navigator.push(context, route);
+              },
               child: const ListTile(
                 title: Text("localisation"),
                 leading: Icon(
@@ -312,7 +320,7 @@ class Drawbles {
             InkWell(
               onTap: () {
                  MembreModels.isDeconnected();
-                 var route=MaterialPageRoute(builder: ((context) => HomePage()));
+                 var route=MaterialPageRoute(builder: ((context) => PushNot()));
                   Navigator.push(context, route);
               },
               child: const ListTile(

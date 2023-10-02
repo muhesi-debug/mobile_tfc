@@ -1,5 +1,6 @@
 import 'package:advance_pdf_viewer2/advance_pdf_viewer.dart';
 import 'package:apisaissai/authentification/controls/loading.dart';
+import 'package:apisaissai/colors/color.dart';
 import 'package:apisaissai/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 class ViewProgramme extends StatefulWidget {
@@ -38,6 +39,7 @@ class _ViewProgrammeState extends State<ViewProgramme> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: kBackgroundColor,
         title: Text(widget.designation!),
       ),
       body: loading?Loading():Center(

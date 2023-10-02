@@ -5,10 +5,12 @@ import 'package:apisaissai/authentification/controls/loading.dart';
 import 'package:apisaissai/authentification/models/membreModels.dart';
 import 'package:apisaissai/colors/color.dart';
 import 'package:apisaissai/home/homePage.dart';
+import 'package:apisaissai/main.dart';
 import 'package:apisaissai/widgets/fieldText.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart'as http;
 
+import '../message_push/view/generateNot.dart';
 import 'controls/encrypt.dart';
 
 class Login extends StatefulWidget {
@@ -84,7 +86,7 @@ class _LoginState extends State<Login> {
       body: Center(
         child: SingleChildScrollView(
           child: Container(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Form(
               key: _key,
               child: Column(
@@ -113,7 +115,7 @@ class _LoginState extends State<Login> {
                          if (_key.currentState!.validate()) {
                           if (txtEmail.value=="admin@gmail.com" && txtPass.value=="admin") {
                             // Appel de la partie de l'admin de l'apk
-                            var route=MaterialPageRoute(builder: ((context) => HomeAdminPage()));
+                            var route=MaterialPageRoute(builder: ((context) => const HomeAdminPage()));
                               Navigator.push(context, route);
                             
                           }else{

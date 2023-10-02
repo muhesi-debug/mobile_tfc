@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:apisaissai/admin/programmeView.dart';
 import 'package:apisaissai/authentification/controls/loading.dart';
 import 'package:apisaissai/colors/color.dart';
@@ -26,7 +25,7 @@ class _ProgrammeState extends State<Programme> {
 
   // récupération 
   Future fetchAllPdf()async{
-    final Uri url=Uri.parse("http://g3ig-kmuhesi.uaclab.net/php/getProgramme.php");
+    final Uri url=Uri.parse("http://g3ig-kmuhesi.uaclab.net/php/getVideos.php");
     final response=await http.get(url);
     if (response.statusCode==200) {
       setState(() {
@@ -47,7 +46,7 @@ class _ProgrammeState extends State<Programme> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: kBackgroundColor,
+        backgroundColor: redColorTextTitre,
         title: const Text('Programme'),
         centerTitle: true,
       ),
@@ -58,10 +57,15 @@ class _ProgrammeState extends State<Programme> {
           itemBuilder: ((context, index) {
             return  ListTile(
               leading: IconButton(onPressed: (){
-                var route=MaterialPageRoute(builder: ((context) => ViewProgramme(url: "http://g3ig-kmuhesi.uaclab.net/php/images/"+pdfList[index]['fichier'],designation: pdfList[index]['designation'],)));
+                var route=MaterialPageRoute(builder: ((context) => ViewProgramme(url: "http://g3ig-kmuhesi.uaclab.net/php/vidoes/"+pdfList[index]['fichier'],designation: pdfList[index]['designation'],)));
                   Navigator.push(context, route);
               }, icon: const Icon(Icons.picture_as_pdf,color: Colors.red,)),
-              title: Text(pdfList[index]['designation']),
+              title: Row(
+                children: [
+                  Text(pdfList[index]['designation'],style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
+                  Text(pdfList[index]['datePub'],style: TextStyle(color: Colors.white24),),
+                ],
+              ),
               
             );
             

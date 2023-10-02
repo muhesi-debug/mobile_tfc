@@ -31,23 +31,23 @@ class MovieModel {
       movieName: "Muhesi muyisa",
       cast: [
         {
-          "name":"muyisa",
-          "role":"paul gobert",
+          "name":"Publicité",
+          "role":"UAC",
           "image":"images/logo.jpg",
         },
         {
-          "name":"muyisa",
-          "role":"paul gobert",
+          "name":"Berceau du savoir",
+          "role":"Connaissance",
           "image":"images/logo.jpg",
         },
         {
-          "name":"muyisa",
-          "role":"paul gobert",
+          "name":"Messe en englais",
+          "role":"Réligion",
           "image":"images/logo.jpg",
         },
         {
-          "name":"muyisa",
-          "role":"paul gobert",
+          "name":"Anciens succes",
+          "role":"Enanga eya bosokulu",
           "image":"images/logo.jpg",
         },
 
@@ -62,7 +62,7 @@ class MovieModel {
         },
         {
           "name":"Moto tv",
-          "imageUrl":"images/1.jpg",
+          "imageUrl":"images/Moto.PNG",
           "date":"Juin 15, 2023",
           "rating":"5.0",
           "comment":"Je suis vraiment fier de cette inovation que nous amène la moto tv, je suis sincèrement reconnessant.",
@@ -76,7 +76,7 @@ class MovieModel {
         },
         {
           "name":"Moto tv",
-          "imageUrl":"images/1.jpg",
+          "imageUrl":"images/Moto.PNG",
           "date":"Juin 15, 2023",
           "rating":"5.0",
           "comment":"Je suis vraiment fier de cette inovation que nous amène la moto tv, je suis sincèrement reconnessant.",
@@ -85,32 +85,32 @@ class MovieModel {
       year: "2023",
       movieRating: "8.3"),
       MovieModel(
-        imageAsset: "images/1.jpg",
-        movieName: "Gift",
+        imageAsset: "images/Moto.PNG",
+        movieName: "Moto Sport",
         year: "2023",
         movieRating: "6.4",
       ),
       MovieModel(
         imageAsset: "images/Moto.PNG",
-        movieName: "Gift",
+        movieName: "Religion",
         year: "2023",
         movieRating: "6.4",
       ),
       MovieModel(
-        imageAsset: "images/1.jpg",
-        movieName: "Gift",
+        imageAsset: "images/Moto.PNG",
+        movieName: "UAC Culturelle",
         year: "2023",
         movieRating: "6.4",
       ),
       MovieModel(
         imageAsset: "images/Uac.PNG",
-        movieName: "Gift",
+        movieName: "Ekir yo Butuku",
         year: "2023",
         movieRating: "6.4",
       ),
       MovieModel(
-        imageAsset: "images/1.jpg",
-        movieName: "Gift",
+        imageAsset: "images/Moto.PNG",
+        movieName: "Anciens Succes",
         year: "2023",
         movieRating: "6.4",
       ),
@@ -119,35 +119,35 @@ class MovieModel {
    final legendaryImages=[
     MovieModel(
         imageAsset: "images/Moto.PNG",
-        movieName: "Gift",
+        movieName: "Moto Zap",
         year: "2023",
         movieRating: "6.4",
       ),
       MovieModel(
-        imageAsset: "images/1.jpg",
-        movieName: "Gift",
+        imageAsset: "images/Moto.PNG",
+        movieName: "Yira Lande",
         year: "2023",
         movieRating: "6.4",
       ),
       MovieModel(
         imageAsset: "images/Uac.PNG",
-        movieName: "Gift",
+        movieName: "Moto Zik Gospel",
         year: "2023",
         movieRating: "6.4",
       ),
       MovieModel(
-        imageAsset: "images/1.jpg",
-        movieName: "Gift",
+        imageAsset: "images/Moto.PNG",
+        movieName: "Africa Music",
         year: "2023",
         movieRating: "6.4",
       ),
 
    ];
    final genresList=[
-    MovieModel(movieName: "Muhesi",imageAsset: "images/1.jpg"),
+    MovieModel(movieName: "Muhesi",imageAsset: "images/Moto.PNG"),
     MovieModel(movieName: "Muhesi",imageAsset: "images/Moto.PNG"),
     MovieModel(movieName: "Muhesi",imageAsset: "images/Uac.PNG"),
     MovieModel(movieName: "Muhesi",imageAsset: "images/Moto.PNG"),
-    MovieModel(movieName: "Muhesi",imageAsset: "images/1.jpg"),
+    MovieModel(movieName: "Muhesi",imageAsset: "images/Moto.PNG"),
    ];
 

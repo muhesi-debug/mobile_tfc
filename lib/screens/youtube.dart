@@ -17,7 +17,7 @@ class _YouTubeHomeState extends State<YouTubeHome> {
      //%a chaine: UCpxAN_MF3CwzuK5l44Wy-TQ
 
    getChannel() async{
-    Channel channel= await ApiService.instance.fetchChannel(channelId: '09ep-yNrZxE');
+    Channel channel= await ApiService.instance.fetchChannel(channelId: 'UCBVjMGOIkavEAhyqpxJ73Dw');
     setState(() {
       _channel!=channel;
     });
